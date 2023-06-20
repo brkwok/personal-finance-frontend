@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import { Provider } from "react";
-import { reducers } from "./redux/reducers";
+import { Provider } from "react-redux";
+import { reducers } from "./redux/reducers/rootReducer";
 import thunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
