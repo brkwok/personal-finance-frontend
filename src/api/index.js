@@ -1,25 +1,24 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: process.env.BASE_URL });
-
-API.interceptors.request.use((req) => {
-	if (localStorage.getItem("user_info")) {
-		req.headers.Authorization = `Bearer ${JSON.parse(
-			localStorage.getItem("user_info").token
-		)}`;
-	}
-
-	return req;
+const API = axios.create({
+	baseURL: "http://localhost:5000",
+	withCredentials: true,
 });
 
-export const signIn = (data) => API.post("/users/signin", data);
-export const signInGoogle = (accessToken) =>
-	API.post("/users/signin", {
-		googleAccessToken: accessToken,
-	});
+export const signInGoogle = () => API.get("/login/federated/google");
 
-export const signUp = (data) => API.post("/users/signup", data);
-export const signUpGoogle = (accessToken) =>
-	API.post("/users/signup", {
-		googleAccessToken: accessToken,
-	});
+export const getSessionInfo = async () => {
+	try {
+		const user = await API.get("/auth/user");
+
+		const data = user.data;
+
+		return data;
+	} catch (error) {
+		console.error("Error fetching session info", error);
+
+		throw new Error("An error occured while fetching user information");
+	}
+};
+
+export const logOutUser = async () => API.post("/auth/logout");

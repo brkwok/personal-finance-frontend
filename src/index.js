@@ -5,11 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { Provider } from "react-redux";
-import { reducers } from "./redux/reducers/rootReducer";
+import reducers from "./redux/reducers/rootReducer";
 import thunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const store = configureStore({
 	reducer: reducers,
