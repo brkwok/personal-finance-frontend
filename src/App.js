@@ -4,9 +4,10 @@ import { useDispatch } from "react-redux";
 
 import { loadUser } from "./redux/actions/sessionActions";
 
-import Login from "./components/Login/Login";
-import NavLayout from "./components/Nav/NavLayout";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Login from "./components/Login";
+import NavLayout from "./components/Nav";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from "./components/Dashboard";
 
 function App() {
 	const dispatch = useDispatch();
@@ -20,9 +21,17 @@ function App() {
 		<div className="App">
 			<Routes>
 				<Route index element={<Login />} />
-				<Route element={<ProtectedRoute><NavLayout /></ProtectedRoute>}>
-					<Route exact path={"/dashboard"} element={<div>hello</div>} />
+				<Route
+					element={
+						<ProtectedRoute>
+							<NavLayout />
+						</ProtectedRoute>
+					}
+				>
+					<Route exact path={"/dashboard"} element={<Dashboard />} />
 				</Route>
+
+				<Route path="*" element={<div>not found</div>} />
 			</Routes>
 		</div>
 	);

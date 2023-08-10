@@ -1,4 +1,4 @@
-import { RECEIVE_SESSION, RECEIVE_LOGOUT } from "../types/sessionTypes";
+import { RECEIVE_SESSION, RECEIVE_LOGOUT, RECEIVE_LOGOUT_ERROR } from "../types/sessionTypes";
 
 const initialState = {
 	isLoggedIn: false,
@@ -14,6 +14,7 @@ const sessionReducer = (state = initialState, action) => {
 				isLoggedIn: true,
 			};
 		case RECEIVE_LOGOUT:
+		case RECEIVE_LOGOUT_ERROR:
 			return {
 				...state,
 				user: null,
