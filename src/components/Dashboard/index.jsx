@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { exchangeToken } from "../../api";
+import { generateExchangeToken } from "../../api/linkToken";
 import PlaidLink from "../Plaid/PlaidLink";
 
 const Dashboard = () => {
@@ -7,7 +7,7 @@ const Dashboard = () => {
 
 	const generateToken = async () => {
 		try {
-			const response = await exchangeToken();
+			const response = await generateExchangeToken();
 
 			const data = response.data;
 
@@ -18,7 +18,7 @@ const Dashboard = () => {
 	};
 
 	useEffect(() => {
-		generateToken();
+	generateToken();
 	}, []);
 
   return (

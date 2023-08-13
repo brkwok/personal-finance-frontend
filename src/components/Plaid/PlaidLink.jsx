@@ -1,36 +1,39 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { usePlaidLink } from "react-plaid-link";
-import { setAccessToken } from "../../api";
+import { exchangeToken } from "../../api/linkToken";
 
 const PlaidLink = (props) => {
-	const onSuccess = useCallback((publicToken, metadata) => {
-		const res = setAccessToken(publicToken, metadata)
-      .then( body => {
-        console.log(body);
-      })
-	}, []);
+	const onSuccess = async (publicToken, metadata) => {
+		const res = await exchangeToken(
+			publicToken,
+			metadata.institution,
+			metadata.accounts
+		);
+
+		console.log(res);
+	};
 
 	const config = {
 		token: props.linkToken,
 		onSuccess,
 	};
 
-  let isOauth = false;
+	let isOauth = false;
 
-  if (window.location.href.includes("?oauth_state_id=")) {
-    // TODO: figure out how to delete this ts-ignore
-    // @ts-ignore
-    config.receivedRedirectUri = window.location.href;
-    isOauth = true;
-  }
+	if (window.location.href.includes("?oauth_state_id=")) {
+		// TODO: figure out how to delete this ts-ignore
+		// @ts-ignore
+		config.receivedRedirectUri = window.location.href;
+		isOauth = true;
+	}
 
 	const { open, ready } = usePlaidLink(config);
 
-  useEffect(() => {
-    if (isOauth && ready) {
-      open();
-    }
-  }, [ready, open, isOauth]);
+	useEffect(() => {
+		if (isOauth && ready) {
+			open();
+		}
+	}, [ready, open, isOauth]);
 
 	return (
 		<div className="bg-bluegray-700 flex items-center justify-center">

@@ -3,7 +3,7 @@ import { LOGIN_API } from "../../config/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../UI/Button";
-import { demoLogin } from "../../api";
+import { demoLogin } from "../../api/session";
 import { RECEIVE_SESSION } from "../../redux/types/sessionTypes";
 
 const Login = () => {
@@ -16,7 +16,7 @@ const Login = () => {
 	};
 
 	const handleDemoLogin = async () => {
-		const data = await demoLogin();
+		const data = await demoLogin("demo", "123456");
 
 		dispatch({ type: RECEIVE_SESSION, payload: data});
 		navigate("/dashboard");
@@ -30,30 +30,17 @@ const Login = () => {
 
 	return (
 		<div className="h-screen bg-bluegray-700 flex flex-col items-center justify-center space-y-3">
-			{/* <button
-				onClick={handleLogin}
-				className="bg-bluegray-200 text-black rounded-lg w-[300px] flex justify-center items-center h-[50px] hover:bg-bluegray-300 hover:text-bluegray-700 transition-all"
-			>
-				<div className="px-1">
-					<i className="fa-brands fa-google"></i>
-				</div>
-				<span>Sign in with Google</span>
-			</button> */}
 			<Button
 				handleLogin={handleLogin}
 				logo="fa-brands fa-google"
 				message="Sign in with Google"
+				addStyle="w-80 h-12"
 			/>
-			{/* <button className="bg-bluegray-200 text-black rounded-lg w-[300px] flex justify-center items-center h-[50px] hover:bg-bluegray-300 hover:text-bluegray-700 transition-all">
-				<div className="px-1">
-					<i className="fa-regular fa-face-laugh-wink"></i>
-				</div>
-				<span>Sign in with Demo Account</span>
-			</button> */}
 			<Button 
 				handleLogin={handleDemoLogin}
 				logo="fa-regular fa-face-laugh-wink"
 				message="Sign in with Demo Account"
+				addStyle="w-80 h-12"
 			/>
 		</div>
 	);

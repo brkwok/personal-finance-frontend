@@ -5,7 +5,7 @@ import {
 	RECEIVE_LOGOUT_ERROR,
 } from "../types/sessionTypes";
 
-import { getSessionInfo, logOutUser } from "../../api/index";
+import { getSessionInfo, logOutUser } from "../../api/session";
 
 export const loadUser = (navigate) => async (dispatch) => {
 	try {
