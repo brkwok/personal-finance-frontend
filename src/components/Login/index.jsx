@@ -18,9 +18,9 @@ const Login = () => {
 	const handleDemoLogin = async () => {
 		const data = await demoLogin("demo", "123456");
 
-		dispatch({ type: RECEIVE_SESSION, payload: data});
+		dispatch({ type: RECEIVE_SESSION, payload: data });
 		navigate("/dashboard");
-	}
+	};
 
 	useEffect(() => {
 		if (isLoggedIn && user) {
@@ -36,9 +36,9 @@ const Login = () => {
 				message="Sign in with Google"
 				addStyle="w-80 h-12"
 			/>
-			<Button 
+			<Button
 				handleLogin={handleDemoLogin}
-				logo="fa-regular fa-face-laugh-wink"
+				logo="fa-solid fa-user"
 				message="Sign in with Demo Account"
 				addStyle="w-80 h-12"
 			/>

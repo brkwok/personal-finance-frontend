@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import NavLayout from "./components/Nav";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./components/Dashboard";
+import SidebarLayout from "./components/Sidebar";
 
 function App() {
 	const dispatch = useDispatch();
@@ -28,7 +29,11 @@ function App() {
 						</ProtectedRoute>
 					}
 				>
-					<Route exact path={"/dashboard"} element={<Dashboard />} />
+					<Route element={
+						<SidebarLayout />
+					}>
+						<Route exact path={"/dashboard"} element={<Dashboard />} />
+					</Route>
 				</Route>
 
 				<Route path="*" element={<div>not found</div>} />

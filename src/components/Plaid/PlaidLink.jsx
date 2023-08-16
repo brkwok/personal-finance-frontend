@@ -9,8 +9,6 @@ const PlaidLink = (props) => {
 			metadata.institution,
 			metadata.accounts
 		);
-
-		console.log(res);
 	};
 
 	const config = {
