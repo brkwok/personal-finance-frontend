@@ -1,56 +1,27 @@
 import React from "react";
-import { Chart } from "react-google-charts";
+
+import { BARCHART_COL_OPTIONS } from "../../config/chartOptions";
+import ChartLayout from "./ChartLayout";
 
 const data = [
-	["Year", "Sales", "Expenses", "Profit"],
+	["", "Sales", "Expenses", "Profit"],
 	["2014", 1000, 400, 200],
 	["2015", 1170, 460, 250],
 	["2016", 660, 1120, 300],
 	["2017", 1030, 540, 350],
 ];
 
-const options = {
-	animation: {
-		startup: true,
-		duration: 1000,
-		easing: "out",
-	},
-	annotations: {
-		textStyle: {
-			bold: true,
-			auraColor: "",
-		},
-		alwaysOutside: true,
-	},
-	backgroundColor: "",
-	chartArea: {
-		width: "85%",
-		height: "85%",
-	},
-	hAxis: {
-		textPosition: "none",
-		textStyle: {
-			color: "",
-		},
-	},
-	height: 300,
-	title: "Spendings",
-	titleTextStyle: {
-		fontSize: 22,
-		color: "",
-	},
-	tooltip: { isHtml: true }, // Use an HTML tooltip.
-	vAxis: {
-		textStyle: {
-			color: "",
-		},
-		format: "$###,##0",
-	},
-  legend: "none"
-};
+const chartOptions = BARCHART_COL_OPTIONS;
 
 const BarChartCol = () => {
-	return <Chart chartType="Bar" data={data} options={options} />;
+	return (
+		<ChartLayout
+			chartType="ComboChart"
+			data={data}
+			chartOptions={chartOptions}
+			chartTitle="Spendings"
+		/>
+	);
 };
 
 export default BarChartCol;

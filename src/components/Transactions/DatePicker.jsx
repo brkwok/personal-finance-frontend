@@ -12,7 +12,7 @@ const DatePicker = ({
 }) => {
 	return (
 		<div>
-			<div className="w-fit flex flex-row space-x-3 items-end">
+			<div className="w-fit flex flex-row space-x-3 items-end pb-2">
 				<Dropdown
 					range={monthRange}
 					title={"Month"}
