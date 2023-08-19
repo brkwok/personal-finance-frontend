@@ -5,10 +5,11 @@ import { useDispatch } from "react-redux";
 import { loadUser } from "./redux/actions/sessionActions";
 
 import Login from "./components/Login";
-import NavLayout from "./components/Nav";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./components/Dashboard";
 import SidebarLayout from "./components/Sidebar";
+import ContentWrapper from "./components/ContentWrapper";
+import Transactions from "./components/Transactions";
 
 function App() {
 	const dispatch = useDispatch();
@@ -25,17 +26,15 @@ function App() {
 				<Route
 					element={
 						<ProtectedRoute>
-							<NavLayout />
+							<SidebarLayout />
 						</ProtectedRoute>
 					}
 				>
-					<Route element={
-						<SidebarLayout />
-					}>
+					<Route element={<ContentWrapper />}>
 						<Route exact path={"/dashboard"} element={<Dashboard />} />
+						<Route exact path={"/transactions"} element={<Transactions />} />
 					</Route>
 				</Route>
-
 				<Route path="*" element={<div>not found</div>} />
 			</Routes>
 		</div>

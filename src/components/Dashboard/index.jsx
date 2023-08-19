@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { generateExchangeToken } from "../../api/linkToken";
 import PlaidLink from "../Plaid/PlaidLink";
-import { fetchDateRange } from "../../api/transaction";
-
-import DatePicker from "../Transactions/DatePicker";
 
 const Dashboard = () => {
 	const [linkToken, setLinkToken] = useState(null);
@@ -25,8 +22,7 @@ const Dashboard = () => {
 	}, []);
 
 	return (
-		<div>
-			<DatePicker />
+		<div className="">
 			{linkToken && <PlaidLink linkToken={linkToken} />}
 		</div>
 	);

@@ -4,11 +4,11 @@ import { exchangeToken } from "../../api/linkToken";
 
 const PlaidLink = (props) => {
 	const onSuccess = async (publicToken, metadata) => {
-		const res = await exchangeToken(
-			publicToken,
-			metadata.institution,
-			metadata.accounts
-		);
+		try {
+			await exchangeToken(publicToken, metadata.institution, metadata.accounts);
+		} catch (err) {
+			console.error(err.message);
+		}
 	};
 
 	const config = {
