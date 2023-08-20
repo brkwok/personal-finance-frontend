@@ -5,7 +5,13 @@ import {
 
 const initialState = {
 	transactions: [],
-	aggregation: [],
+	aggregation: {
+		currentMonthAggregation: [],
+		previousMonthAggregation: [],
+		monthBeforePreviousAggregation: [],
+		month: ""
+	},
+	categories: [],
 };
 
 const transactionsReducer = (state = initialState, action) => {
@@ -14,7 +20,8 @@ const transactionsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				transactions: action.payload.transactions,
-				aggregation: action.payload.aggregation,
+				aggregation: action.payload.aggregation || {},
+				categories: action.payload.categories,
 			};
 		case CLEAR_TRANSACTIONS:
 			return initialState;

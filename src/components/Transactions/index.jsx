@@ -11,6 +11,7 @@ const Transactions = (props) => {
 	const transactionsAggregation = useSelector(
 		(state) => state.transactions.aggregation
 	);
+	const categories = useSelector((state) => state.transactions.categories);
 	const dispatch = useDispatch();
 	const [yearRange] = useYearRange();
 	const monthRange = Array.from({ length: 12 }, (_, idx) => idx + 1);
@@ -34,7 +35,7 @@ const Transactions = (props) => {
 					setSelectedYear={setSelectedYear}
 				/>
 				<div className="h-auto">
-					<TransactionChart transactionsAggregation={transactionsAggregation} />
+					<TransactionChart transactionsAggregation={transactionsAggregation} categories={categories} />
 				</div>
 				<div className="bg-bluegray-800">
 					<TransactionsTable transactions={transactions} />

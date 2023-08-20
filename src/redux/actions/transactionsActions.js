@@ -7,12 +7,12 @@ import { fetchTransactions } from "../../api/transaction";
 
 export const receiveTransactions = (year, month) => async (dispatch) => {
 	try {
-		const res = await fetchTransactions(year, month);
-		const { transactions, transactionsAggregation: aggregation } = res;
+		const transactionsRes = await fetchTransactions(year, month);
+		const { transactions, aggregation, categories } = transactionsRes;
 
 		dispatch({
 			type: RECEIVE_TRANSACTIONS,
-			payload: { transactions, aggregation },
+			payload: { transactions, aggregation, categories },
 		});
 	} catch (error) {
 		console.error(error.message);
