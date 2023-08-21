@@ -4,9 +4,11 @@ import BarChart from "./BarChart";
 import BarChartCol from "./BarChartCol";
 import { CATEGORY_COLOR_MAP } from "../../helpers/charts";
 import ChartLegend from "./ChartLegend";
+import { useSelector } from "react-redux";
 
 const TransactionChart = ({ transactionsAggregation, categories }) => {
 	const { currentMonthAggregation } = transactionsAggregation;
+	const loading = useSelector((state) => state.transactions.loading);
 	const [doughnutColorMap, setDoughnutColorMap] = useState([]);
 	const colorMap = CATEGORY_COLOR_MAP;
 
@@ -20,7 +22,7 @@ const TransactionChart = ({ transactionsAggregation, categories }) => {
 	}, [currentMonthAggregation]);
 
 	return (
-		categories.length !== 0 && (
+		categories.length !== 0 && !loading && (
 			<div className="w-full flex flex-col">
 				<div className="grid grid-cols-1 sm:grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 items-center justify-center pb-8 min-h-[290px]">
 					<DoughnutChart
@@ -38,7 +40,7 @@ const TransactionChart = ({ transactionsAggregation, categories }) => {
 						colorMap={colorMap}
 					/>
 				</div>
-        <ChartLegend />
+				<ChartLegend />
 			</div>
 		)
 	);

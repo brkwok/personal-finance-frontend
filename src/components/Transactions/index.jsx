@@ -11,7 +11,6 @@ const Transactions = (props) => {
 	const transactionsAggregation = useSelector(
 		(state) => state.transactions.aggregation
 	);
-	const loading = useSelector((state) => state.transactions.loading);
 
 	const categories = useSelector((state) => state.transactions.categories);
 	const dispatch = useDispatch();
@@ -26,7 +25,6 @@ const Transactions = (props) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [dispatch]);
 
-	
 	return (
 		<div className="w-full h-full text-bluegray-200">
 			<div className="flex flex-col h-full">
@@ -39,13 +37,10 @@ const Transactions = (props) => {
 					setSelectedYear={setSelectedYear}
 				/>
 				<div className="h-auto">
-					{
-						!loading && 
-						<TransactionChart
-							transactionsAggregation={transactionsAggregation}
-							categories={categories}
-						/>
-					}
+					<TransactionChart
+						transactionsAggregation={transactionsAggregation}
+						categories={categories}
+					/>
 				</div>
 				<div className="bg-bluegray-800">
 					<TransactionsTable transactions={transactions} />
