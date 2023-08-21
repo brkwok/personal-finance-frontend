@@ -1,21 +1,86 @@
 import React from "react";
 import ChartLayout from "./ChartLayout";
 import { BARCHART_OPTIONS } from "../../config/chartOptions";
-
-const data = [
-	["City", "2010 Population", "2000 Population"],
-	["New York City, NY", 8175000, 8008000],
-	["Los Angeles, CA", 3792000, 3694000],
-	["Chicago, IL", 2695000, 2896000],
-	["Houston, TX", 2099000, 1953000],
-	["Philadelphia, PA", 1526000, 1517000],
-];
+import { extractMonth, getBarChartRow } from "../../helpers/charts";
 
 const chartOptions = BARCHART_OPTIONS;
 
-const BarChart = () => {
+const formatData = (aggregation, categories, colorMap) => {
+	const month = new Date(aggregation.month).getMonth();
+	const currMonth = extractMonth(month);
+	const prevMonth = extractMonth(month - 1);
+	const monthBeforePrevMonth = extractMonth(month - 2);
+
+	const header = ["Month"];
+
+	categories.forEach((category) => {
+		header.push(
+			category,
+			{ role: "style" },
+			{
+				type: "string",
+				role: "tooltip",
+				p: { html: true },
+			}
+		);
+	});
+	header.push({ type: "string", role: "annotation" });
+
+	const data = [header];
+
+	data.push(
+		getBarChartRow(
+			aggregation.currentMonthAggregation,
+			currMonth,
+			categories,
+			colorMap
+		)
+	);
+	data.push(
+		getBarChartRow(
+			aggregation.previousMonthAggregation,
+			prevMonth,
+			categories,
+			colorMap
+		)
+	);
+	data.push(
+		getBarChartRow(
+			aggregation.monthBeforePreviousAggregation,
+			monthBeforePrevMonth,
+			categories,
+			colorMap
+		)
+	);
+
+	return data;
+};
+
+const BarChart = ({ data, categories, colorMap }) => {
+	// const [options, setOptions] = useState(chartOptions);
+
+	// useEffect(() => {
+	// 	const series = categories.map((category) => {
+	// 		return {
+	// 			color: colorMap[category][0],
+	// 		};
+	// 	});
+
+	// 	setOptions((prevOption) => {
+	// 		return {
+	// 			...prevOption,
+	// 			series,
+	// 		};
+	// 	});
+	// }, [categories, colorMap, data]);
+
 	return (
-		<ChartLayout chartOptions={chartOptions}  data={data} chartType="BarChart" chartTitle="Monthly Total" />
+		<ChartLayout
+			chartOptions={chartOptions}
+			data={formatData(data, categories, colorMap)}
+			chartType="BarChart"
+			chartTitle="Monthly Total"
+		/>
 	);
 };
 

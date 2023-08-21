@@ -19,11 +19,11 @@ const Sidebar = (props) => {
 					iconType="fa-regular fa-credit-card"
 					pathname={pathname}
 				/>
-				<SidebarIcon
+				{/* <SidebarIcon
 					linkTo="/institutions"
 					iconType="fa-solid fa-building-columns"
 					pathname={pathname}
-				/>
+				/> */}
 			</div>
 			<div className="rounded-full overflow-hidden hover:cursor-pointer hover:text-bluegray-300 transition-all">
 					<i className="fa-sharp fa-solid fa-gear"></i>

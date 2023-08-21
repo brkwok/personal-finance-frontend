@@ -8,6 +8,7 @@ import { fetchTransactions } from "../../api/transaction";
 export const receiveTransactions = (year, month) => async (dispatch) => {
 	try {
 		const transactionsRes = await fetchTransactions(year, month);
+
 		const { transactions, aggregation, categories } = transactionsRes;
 
 		dispatch({

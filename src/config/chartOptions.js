@@ -11,46 +11,46 @@ export const DOUGHNUT_CHART_OPTIONS = {
 		fontSize: 22,
 		color: "",
 	},
-	format: "currency",
 	tooltip: { isHtml: true }, // Use an HTML tooltip.
+	colors: [],
 };
 
 export const BARCHART_COL_OPTIONS = {
 	animation: {
 		startup: true,
 		duration: 1000,
-		easing: 'out',
+		easing: "out",
 	},
 	annotations: {
 		textStyle: {
 			bold: true,
-			auraColor: '#ffffff',
+			auraColor: "#ffffff",
 		},
 		alwaysOutside: true,
 	},
-	backgroundColor: '',
+	backgroundColor: "",
 	chartArea: {
-		width: '75%',
-		height: '90%',
+		width: "75%",
+		height: "90%",
 	},
 	hAxis: {
-		textPosition: 'none',
+		textPosition: "none",
 		textStyle: {
-			color: '',
+			color: "",
 		},
 	},
 	tooltip: { isHtml: true },
-	legend: 'none',
-	title: 'Spendings',
+	legend: "none",
+	title: "Spendings",
 	titleTextStyle: {
 		fontSize: 22,
-		color: '',
+		color: "",
 	},
 	vAxis: {
 		textStyle: {
-			color: '#CBD5E1',
+			color: "#CBD5E1",
 		},
-		format: '$###,##0',
+		format: "$###,##0",
 	},
 };
 
@@ -63,9 +63,9 @@ export const BARCHART_OPTIONS = {
 	chartArea: { width: "70%", height: "90%" },
 	annotations: {
 		textStyle: {
-			color: "",
 			bold: true,
-			auraColor: "",
+			color: "#CBD5E1",
+			auraColor: "#CBD5E1",
 		},
 		alwaysOutside: true,
 	},
@@ -73,20 +73,13 @@ export const BARCHART_OPTIONS = {
 	bar: { groupWidth: "60%" },
 	hAxis: {
 		textStyle: {
-			color: "",
+			color: "#CBD5E1",
 		},
 		format: "$###,##0",
 		viewWindowMode: "maximized",
 	},
-	// height: DEFAULT_CHART_HEIGHT,
 	isStacked: true,
-	// series: [],
-	// title: "Monthly Total",
-	// titleTextStyle: {
-	// 	fontSize: 22,
-	// 	color: "",
-	// },
-	// tooltip: { isHtml: true }, // Use an HTML tooltip.
+	tooltip: { isHtml: true }, // Use an HTML tooltip.
 	vAxis: {
 		textStyle: {
 			color: "#94A3B8",

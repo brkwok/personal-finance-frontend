@@ -9,9 +9,10 @@ const initialState = {
 		currentMonthAggregation: [],
 		previousMonthAggregation: [],
 		monthBeforePreviousAggregation: [],
-		month: ""
+		month: "",
 	},
 	categories: [],
+	loading: true,
 };
 
 const transactionsReducer = (state = initialState, action) => {
@@ -22,6 +23,12 @@ const transactionsReducer = (state = initialState, action) => {
 				transactions: action.payload.transactions,
 				aggregation: action.payload.aggregation || {},
 				categories: action.payload.categories,
+				loading: false,
+			};
+		case "LOADING_TEST":
+			return {
+				...state,
+				loading: true,
 			};
 		case CLEAR_TRANSACTIONS:
 			return initialState;

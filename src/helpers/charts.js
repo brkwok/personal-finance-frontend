@@ -24,6 +24,14 @@ const CATEGORY_COLOR = [
 	// add more colors if needed
 ];
 
+export const CATEGORY_COLOR_MAP = {
+	"Food and Drink": ["#3366CC", "#85a3e0"],
+	Payment: ["#0BBBD4", "#6ee7f7"],
+	Transfer: ["#DC3912", "#f48b71"],
+	Travel: ["#FF9900", "#ffc266"],
+	Other: ["#109618", "#75f07d"],
+};
+
 export const extractMonth = (month) => {
 	return months[month];
 };
@@ -40,7 +48,6 @@ export const mapColors = (categories) => {
 export const constructBarChartColBody = (
 	aggregation,
 	categories,
-	colorMap,
 	currMonth,
 	prevMonth
 ) => {
@@ -55,29 +62,47 @@ export const constructBarChartColBody = (
 			currentMonthAggregation,
 			category
 		);
-    const prevToolTip = constructTooltipString(category, prevTotal, prevMonth);
-    const currToolTip = constructTooltipString(category, currTotal, currMonth);
+		const prevToolTip = constructTooltipStringBarCol(
+			category,
+			prevTotal,
+			prevMonth
+		);
+		const currToolTip = constructTooltipStringBarCol(
+			category,
+			currTotal,
+			currMonth
+		);
 
 		return [
 			category,
 			prevTotal,
-			`color: ${colorMap[category][1]}`,
-      prevToolTip,
+			`color: ${CATEGORY_COLOR_MAP[category][1]}`,
+			prevToolTip,
 			currTotal,
-			`color: ${colorMap[category][0]}`,
-      currToolTip,
-      '$' + currTotal.toFixed(2)
+			`color: ${CATEGORY_COLOR_MAP[category][0]}`,
+			currToolTip,
+			"$" + currTotal.toFixed(2),
 		];
 	});
 
-	function customSort(a, b) {
-		if (a[0] === "Other") return 1; // Move "Other" to the end
-		if (b[0] === "Other") return -1; // Keep "Other" in place
-		return 0; // No change for other categories
-	}
-
-	body.sort(customSort);
 	return body;
+};
+
+export const getBarChartRow = (aggregation, month, categories) => {
+	const sumTotal = aggregation.reduce((acc, curr) => acc + curr.totalAmount, 0);
+
+	const row = [month];
+
+	categories.forEach((category) => {
+		const field = aggregation.find((agg) => agg.category === category);
+		row.push(field?.totalAmount || 0);
+		row.push(`color: ${CATEGORY_COLOR_MAP[category][0]}`)
+		row.push(constructTooltipstringBarChart(category, field?.totalAmount || 0, month));
+	});
+
+	row.push(sumTotal.toFixed(2));
+
+	return row;
 };
 
 const findTotalAmountByCategory = (arr, category) => {
@@ -88,7 +113,7 @@ const findTotalAmountByCategory = (arr, category) => {
 	return Math.abs(totalAmount);
 };
 
-const constructTooltipString = (category, amount, month) => {
+const constructTooltipStringBarCol = (category, amount, month) => {
 	const amountStr = amount.toFixed(2);
 
 	return `
@@ -97,4 +122,14 @@ const constructTooltipString = (category, amount, month) => {
     ${month}:&nbsp;<b>$${amountStr}</b>
   </div>
   `;
+};
+
+const constructTooltipstringBarChart = (category, amount, month) => {
+	const amountStr = amount.toFixed(2);
+
+	return `
+	<div style="color: black; margin: 7px; font-size: 13px; font-family: Arial, Helvetica, sans-serif;">
+		<b>${month}</b><br style="line-height: 18px;" />${category}:&nbsp;<b>$${amountStr}</b>
+	</div>
+	`;
 };
