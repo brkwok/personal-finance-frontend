@@ -1,5 +1,5 @@
 const months = [
-	"month",
+	"Jan",
 	"Feb",
 	"Mar",
 	"Apr",
@@ -33,7 +33,7 @@ export const CATEGORY_COLOR_MAP = {
 };
 
 export const extractMonth = (month) => {
-	return months[month];
+	return months[((month % 12) + 12) % 12];
 };
 
 export const mapColors = (categories) => {

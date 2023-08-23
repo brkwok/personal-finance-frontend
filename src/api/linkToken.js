@@ -11,6 +11,7 @@ export const exchangeToken = async (publicToken, institution, accounts) => {
 	const { data } = await API.post("/items", {
 		publicToken,
 		institutionId: institution.institution_id,
+		institutionName: institution.name || "",
 		accounts,
 	});
 

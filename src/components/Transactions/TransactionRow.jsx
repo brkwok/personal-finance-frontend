@@ -14,7 +14,7 @@ const TransactionRow = ({ transaction }) => {
 		transaction;
 
 	return (
-		<tr className="[&>td]:py-3 [&>td]:px-4  border-b border-b-bluegray-400">
+		<tr className="[&>td]:py-3 [&>td]:px-4  border-b border-b-bluegray-400 hover:bg-bluegray-600">
 			<td>{formatDate(transactionDate)}</td>
 			<td>{transactionName}</td>
 			<td className={`${amount >= 0 ? "text-green-400" : "text-red-400"}`}>{formatAmount(amount)}</td>

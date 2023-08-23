@@ -1,29 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { generateExchangeToken } from "../../api/linkToken";
-import PlaidLink from "../Plaid/PlaidLink";
+import React, { useEffect } from "react";
+import PlaidLinkSet from "./PlaidLinkSet";
+import { setLoading } from "../../redux/actions/loadingActions";
+import { useDispatch, useSelector } from "react-redux";
+import { receiveAccounts } from "../../redux/actions/accountsActions";
+import Accounts from "./Accounts";
 
 const Dashboard = () => {
-	const [linkToken, setLinkToken] = useState(null);
-
-	const generateToken = async () => {
-		try {
-			const response = await generateExchangeToken();
-
-			const data = response.data;
-
-			setLinkToken(data.link_token);
-		} catch (error) {
-			console.error(error);
-		}
-	};
+	const dispatch = useDispatch();
+	const accounts = useSelector(state => state.accounts);
 
 	useEffect(() => {
-		generateToken();
-	}, []);
+		dispatch(setLoading());
+		dispatch(receiveAccounts());
+	}, [dispatch]);
 
 	return (
-		<div className="">
-			{linkToken && <PlaidLink linkToken={linkToken} />}
+		<div>
+			<Accounts accounts={accounts} />
+			<PlaidLinkSet />
 		</div>
 	);
 };

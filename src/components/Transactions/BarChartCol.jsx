@@ -13,10 +13,10 @@ const formatData = (aggregation, categories) => {
 	const prevMonth = extractMonth(month - 1);
 	const header = [
 		"Category",
-		prevMonth || "Month",
+		prevMonth || 0,
 		{ role: "style" },
 		{ type: "string", role: "tooltip", p: { html: true } },
-		currMonth || "Month",
+		currMonth || 0,
 		{ role: "style" },
 		{ type: "string", role: "tooltip", p: { html: true } },
 		{ type: "string", role: "annotation" },

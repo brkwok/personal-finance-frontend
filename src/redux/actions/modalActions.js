@@ -4,6 +4,6 @@ export const openModal = (modal) => (dispatch) => {
 	dispatch({ type: OPEN_MODAL, modal });
 };
 
-export const closeModal = (modal) => (dispatch) => {
+export const closeModal = () => (dispatch) => {
 	dispatch({ type: CLOSE_MODAL });
 };

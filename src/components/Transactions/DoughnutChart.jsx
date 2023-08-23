@@ -5,7 +5,7 @@ import { CATEGORY_COLOR_MAP } from "../../helpers/charts";
 
 const chartOptions = DOUGHNUT_CHART_OPTIONS;
 
-const formatAggregation = (aggregationResults, setDefaultOptions) => {
+const formatAggregation = (aggregationResults) => {
 	const header = [
 		"Category",
 		"Total Amount Spent",
@@ -47,20 +47,22 @@ const getToolTipString = (category, amount, percent) => {
 
 const DoughnutChart = ({ data, colorMap }) => {
 	const [options, setOptions] = useState(chartOptions);
+
 	useEffect(() => {
 		options.colors = colorMap;
-		setOptions(options);
-	}, [colorMap, options, setOptions]);
+		setOptions((options));
+	}, [colorMap, options, setOptions, data]);
 
-	return (
-    colorMap.length !== 0 &&
+	// sneaky way to make sure that piechart only re-renders after proper update
+	// of colorMap
+	return data.length === colorMap.length ? (
 		<ChartLayout
 			chartType="PieChart"
 			data={formatAggregation(data)}
 			chartOptions={options}
 			chartTitle="Distribution"
 		/>
-	);
+	) : null;
 };
 
 export default DoughnutChart;

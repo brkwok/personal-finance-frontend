@@ -14,8 +14,6 @@ export const loadUser = (navigate) => async (dispatch) => {
 
 		dispatch({ type: RECEIVE_SESSION, payload: data });
 	} catch (error) {
-		console.error(error);
-
 		dispatch({ type: RECEIVE_SESSION_ERROR, payload: error });
 		navigate("/");
 	}

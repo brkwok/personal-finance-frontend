@@ -1,6 +1,7 @@
 import React from "react";
 import SidebarIcon from "./SidebarIcon";
 import { useLocation } from "react-router-dom";
+import SidebarSetting from "./SidebarSetting"
 
 const Sidebar = (props) => {
 	const location = useLocation();
@@ -25,9 +26,7 @@ const Sidebar = (props) => {
 					pathname={pathname}
 				/> */}
 			</div>
-			<div className="rounded-full overflow-hidden hover:cursor-pointer hover:text-bluegray-300 transition-all">
-					<i className="fa-sharp fa-solid fa-gear"></i>
-				</div>
+			<SidebarSetting />
 		</div>
 	);
 };
