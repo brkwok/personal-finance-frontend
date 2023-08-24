@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import reducers from "./redux/reducers/rootReducer";
 import thunk from "redux-thunk";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
@@ -19,9 +19,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<BrowserRouter>
+			<Router>
 				<App />
-			</BrowserRouter>
+			</Router>
 		</Provider>
 	</React.StrictMode>
 );
