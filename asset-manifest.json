@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/personal-finance-frontend/static/css/main.f6e19dad.css",
+    "main.js": "/personal-finance-frontend/static/js/main.3fadcef1.js",
+    "static/js/787.120b000a.chunk.js": "/personal-finance-frontend/static/js/787.120b000a.chunk.js",
+    "index.html": "/personal-finance-frontend/index.html",
+    "main.f6e19dad.css.map": "/personal-finance-frontend/static/css/main.f6e19dad.css.map",
+    "main.3fadcef1.js.map": "/personal-finance-frontend/static/js/main.3fadcef1.js.map",
+    "787.120b000a.chunk.js.map": "/personal-finance-frontend/static/js/787.120b000a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6e19dad.css",
+    "static/js/main.3fadcef1.js"
+  ]
+}
