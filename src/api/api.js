@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-	baseURL: "https://localhost:5000",
-	withCredentials: true,
+	baseURL: "https://mern-personal-finance-backend.azurewebsites.net",
+	withCredentials: true
 });
 
 export default API;

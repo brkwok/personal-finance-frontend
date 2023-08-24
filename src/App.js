@@ -10,7 +10,7 @@ import Dashboard from "./components/Dashboard";
 import SidebarLayout from "./components/Sidebar";
 import ContentWrapper from "./components/ContentWrapper";
 import Transactions from "./components/Transactions";
-import Modal from "./components/UI/Modal";
+// import Modal from "./components/UI/Modal";
 import Loading from "./components/UI/Loading";
 
 function App() {
