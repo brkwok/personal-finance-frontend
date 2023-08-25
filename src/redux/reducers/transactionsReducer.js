@@ -12,6 +12,8 @@ const initialState = {
 		month: "",
 	},
 	categories: [],
+	colorMap: {},
+	defaultDoughnutOptions: {},
 };
 
 const transactionsReducer = (state = initialState, action) => {
@@ -22,6 +24,8 @@ const transactionsReducer = (state = initialState, action) => {
 				transactions: action.payload.transactions,
 				aggregation: action.payload.aggregation || {},
 				categories: action.payload.categories,
+				colorMap: action.payload.colorMap || {},
+				defaultDoughnutOptions: action.payload.defaultDoughnutOptions || {},
 			};
 		case CLEAR_TRANSACTIONS:
 			return initialState;

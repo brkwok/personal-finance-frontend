@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { DOUGHNUT_CHART_OPTIONS } from "../../config/chartOptions";
+import React from "react";
 import ChartLayout from "./ChartLayout";
-import { CATEGORY_COLOR_MAP } from "../../helpers/charts";
-
-const chartOptions = DOUGHNUT_CHART_OPTIONS;
+import { useSelector } from "react-redux";
 
 const formatAggregation = (aggregationResults) => {
 	const header = [
@@ -17,13 +14,10 @@ const formatAggregation = (aggregationResults) => {
 		0
 	);
 
-	const colors = [];
-
 	const rows = aggregationResults.map((aggregation, i) => {
 		const total = aggregation.totalAmount;
 		const category = aggregation.category;
 		const totalAmount = aggregation.totalAmount;
-		colors.push(CATEGORY_COLOR_MAP[category][0]);
 
 		return [
 			category,
@@ -46,23 +40,18 @@ const getToolTipString = (category, amount, percent) => {
 };
 
 const DoughnutChart = ({ data, colorMap }) => {
-	const [options, setOptions] = useState(chartOptions);
+	const defaultDoughnutOptions = useSelector(
+		(state) => state.transactions.defaultDoughnutOptions
+	);
 
-	useEffect(() => {
-		options.colors = colorMap;
-		setOptions((options));
-	}, [colorMap, options, setOptions, data]);
-
-	// sneaky way to make sure that piechart only re-renders after proper update
-	// of colorMap
-	return data.length === colorMap.length ? (
+	return (
 		<ChartLayout
 			chartType="PieChart"
 			data={formatAggregation(data)}
-			chartOptions={options}
+			chartOptions={defaultDoughnutOptions}
 			chartTitle="Distribution"
 		/>
-	) : null;
+	);
 };
 
 export default DoughnutChart;

@@ -13,7 +13,7 @@ const months = [
 	"Dec",
 ];
 
-const CATEGORY_COLOR = [
+export const CATEGORY_COLOR = [
 	["#3366CC", "#85a3e0"],
 	["#0BBBD4", "#6ee7f7"],
 	["#DC3912", "#f48b71"],
@@ -29,6 +29,7 @@ export const CATEGORY_COLOR_MAP = {
 	Payment: ["#0BBBD4", "#6ee7f7"],
 	Transfer: ["#DC3912", "#f48b71"],
 	Travel: ["#FF9900", "#ffc266"],
+	Recreation: ["#9933ff", "#cc99ff"],
 	Other: ["#109618", "#75f07d"],
 };
 
@@ -49,7 +50,8 @@ export const constructBarChartColBody = (
 	aggregation,
 	categories,
 	currMonth,
-	prevMonth
+	prevMonth,
+	colorMap
 ) => {
 	const { currentMonthAggregation, previousMonthAggregation } = aggregation;
 
@@ -72,14 +74,14 @@ export const constructBarChartColBody = (
 			currTotal,
 			currMonth
 		);
-
+		
 		return [
 			category,
 			prevTotal,
-			`color: ${CATEGORY_COLOR_MAP[category][1]}`,
+			`color: ${colorMap[category][1]}`,
 			prevToolTip,
 			currTotal,
-			`color: ${CATEGORY_COLOR_MAP[category][0]}`,
+			`color: ${colorMap[category][0]}`,
 			currToolTip,
 			"$" + currTotal.toFixed(2),
 		];
@@ -88,7 +90,7 @@ export const constructBarChartColBody = (
 	return body;
 };
 
-export const getBarChartRow = (aggregation, month, categories) => {
+export const getBarChartRow = (aggregation, month, categories, colorMap) => {
 	const sumTotal = aggregation.reduce((acc, curr) => acc + curr.totalAmount, 0);
 
 	const row = [month];
@@ -96,8 +98,10 @@ export const getBarChartRow = (aggregation, month, categories) => {
 	categories.forEach((category) => {
 		const field = aggregation.find((agg) => agg.category === category);
 		row.push(field?.totalAmount || 0);
-		row.push(`color: ${CATEGORY_COLOR_MAP[category][0]}`)
-		row.push(constructTooltipstringBarChart(category, field?.totalAmount || 0, month));
+		row.push(`color: ${colorMap[category][0]}`);
+		row.push(
+			constructTooltipstringBarChart(category, field?.totalAmount || 0, month)
+		);
 	});
 
 	row.push(sumTotal.toFixed(2));

@@ -57,23 +57,6 @@ const formatData = (aggregation, categories, colorMap) => {
 };
 
 const BarChart = ({ data, categories, colorMap }) => {
-	// const [options, setOptions] = useState(chartOptions);
-
-	// useEffect(() => {
-	// 	const series = categories.map((category) => {
-	// 		return {
-	// 			color: colorMap[category][0],
-	// 		};
-	// 	});
-
-	// 	setOptions((prevOption) => {
-	// 		return {
-	// 			...prevOption,
-	// 			series,
-	// 		};
-	// 	});
-	// }, [categories, colorMap, data]);
-
 	return (
 		<ChartLayout
 			chartOptions={chartOptions}

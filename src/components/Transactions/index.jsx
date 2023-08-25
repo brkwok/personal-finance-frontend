@@ -4,7 +4,7 @@ import useYearRange from "../../hooks/useYearRange";
 import DatePicker from "./DatePicker";
 import TransactionChart from "./TransactionChart";
 import { useDispatch, useSelector } from "react-redux";
-import { receiveTransactions } from "../../redux/actions/transactionsActions";
+import { clearTransactions, receiveTransactions } from "../../redux/actions/transactionsActions";
 import { setLoading } from "../../redux/actions/loadingActions";
 
 const Transactions = (props) => {
@@ -12,9 +12,11 @@ const Transactions = (props) => {
 	const transactionsAggregation = useSelector(
 		(state) => state.transactions.aggregation
 	);
-	const isLoading = useSelector((state) => state.ui.loading.isLoading);
 	const categories = useSelector((state) => state.transactions.categories);
+	const colorMap = useSelector((state) => state.transactions.colorMap);
+
 	const dispatch = useDispatch();
+
 	const [yearRange] = useYearRange();
 	const monthRange = Array.from({ length: 12 }, (_, idx) => idx + 1);
 	const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
@@ -30,6 +32,7 @@ const Transactions = (props) => {
 		e.preventDefault();
 
 		dispatch(setLoading());
+		dispatch(clearTransactions());
 		dispatch(receiveTransactions(selectedYear, selectedMonth));
 	};
 
@@ -46,14 +49,13 @@ const Transactions = (props) => {
 					fetchNewData={fetchNewData}
 				/>
 				<div className="h-auto">
-					{
-						!!categories.length && 
+					{!!categories.length && (
 						<TransactionChart
+							colorMap={colorMap}
 							transactionsAggregation={transactionsAggregation}
 							categories={categories}
-							isLoading={isLoading}
 						/>
-					}
+					)}
 				</div>
 				<div className="bg-bluegray-800">
 					<TransactionsTable transactions={transactions} />

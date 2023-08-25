@@ -6,7 +6,7 @@ import ChartLayout from "./ChartLayout";
 
 const chartOptions = BARCHART_COL_OPTIONS;
 
-const formatData = (aggregation, categories) => {
+const formatData = (aggregation, categories, colorMap) => {
 	const month = new Date(aggregation.month).getMonth();
 
 	const currMonth = extractMonth(month);
@@ -25,7 +25,8 @@ const formatData = (aggregation, categories) => {
 		aggregation,
 		categories,
 		currMonth,
-		prevMonth
+		prevMonth,
+		colorMap
 	);
 
 	const data = [[...header], ...body];
@@ -33,11 +34,11 @@ const formatData = (aggregation, categories) => {
 	return data;
 };
 
-const BarChartCol = ({ data, categories }) => {
+const BarChartCol = ({ data, categories, colorMap }) => {
 	return (
 		<ChartLayout
 			chartType="ColumnChart"
-			data={formatData(data, categories)}
+			data={formatData(data, categories, colorMap)}
 			chartOptions={chartOptions}
 			chartTitle="Spendings"
 		/>

@@ -60,7 +60,7 @@ export const BARCHART_OPTIONS = {
 		duration: 1000,
 		easing: "out",
 	},
-	chartArea: { width: "70%", height: "90%" },
+	chartArea: { width: "65%", height: "90%" },
 	annotations: {
 		textStyle: {
 			bold: true,
