@@ -15,7 +15,7 @@ const Dashboard = () => {
 	}, [dispatch]);
 
 	return (
-		<div>
+		<div className='flex justify-start items-center flex-col'>
 			<Accounts accounts={accounts} />
 			<PlaidLinkSet />
 		</div>

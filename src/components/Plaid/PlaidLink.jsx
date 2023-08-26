@@ -1,12 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { usePlaidLink } from "react-plaid-link";
 import { exchangeToken } from "../../api/linkToken";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { finishLoading, setLoading } from "../../redux/actions/loadingActions";
 import { receiveAccounts } from "../../redux/actions/accountsActions";
 
 const PlaidLink = (props) => {
+	const [isDemo, setIsDemo] = useState(false);
 	const dispatch = useDispatch();
+	const user = useSelector((state) => state.session.user);
+
+	useEffect(() => {
+		if (user?.displayName) {
+			setIsDemo(true);
+		}
+	}, [user]);
 
 	const onSuccess = async (publicToken, metadata) => {
 		try {
@@ -40,7 +48,7 @@ const PlaidLink = (props) => {
 	}, [ready, open, isOauth]);
 
 	return (
-		<div className="bg-bluegray-700 flex items-center justify-center">
+		<div className="bg-bluegray-700 w-fit flex items-center justify-center relative group">
 			<button
 				onClick={() => open()}
 				disabled={!ready}
@@ -48,6 +56,20 @@ const PlaidLink = (props) => {
 			>
 				<span>Link New Account with Plaid</span>
 			</button>
+			{isDemo && (
+				<div className="py-2 invisible group-hover:visible transition-all rounded-lg absolute bg-bluegray-200 top-16 text-sm flex justify-center items-center flex-col [&>*>span]:text-red-500">
+					<div className="text-center text-red-500">When prompted for login for demo account</div>
+					<div>
+						Username: <span>user_good</span>
+					</div>
+					<div>
+						Password: <span>pass_good</span>
+					</div>
+					<div>
+						Mobile Code: <span>1234</span>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 };
