@@ -32,6 +32,6 @@ Users can connect their accounts using the Plaid API. The Plaid integration allo
 
 ## Transaction Page
 
-![Transaction](https://drive.google.com/uc?export=view&id=1PkAhDcQ6TozKOVOiDyOJLWcEkSyljJDc)
+![Transaction](https://drive.google.com/uc?export=view&id=11BVIifTmIF5oflTQjNP5xxpMl0f9DH2k)
 
 The transaction page aggregates data from all linked accounts to provide a comprehensive view of financial transactions. This page offers tools to categorize transactions and visualize expenses through the integration of `react-google-charts` and enhances the user experience by providing visualizations of financial data. Charts and graphs help users understand their spending patterns, identify trends, and make informed financial decisions.
