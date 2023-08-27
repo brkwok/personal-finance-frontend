@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Personal Finance Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Personal Finance Frontend repository! This frontend application is built using React.js and Redux for state management. It provides users with an intuitive user interface to manage their financial data, visualize expenses using React Google Charts, and interact with the Personal Finance Backend API for data retrieval and management.
 
-## Available Scripts
+**Note**: The main purpose of this project is for my own personal use and data management. However, a demo account is available for you to explore the application's features and functionality. Feel free to use the demo account to get a firsthand experience of what the application aims to achieve.
 
-In the project directory, you can run:
+## Live Site
 
-### `npm start`
+Check out the live version of the Personal Finance Frontend: [Live Site](https://brkwok.github.io/personal-finance-frontend/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Please note that the backend API may take some time to wake up if it's been inactive. If you experience any delays or issues during the initial load, kindly wait a moment and try again. I appreciate your patience!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Backend Repository
 
-### `npm test`
+The backend API that powers this frontend is available in the [Personal Finance Backend GitHub Repository](https://github.com/brkwok/personal-finance-backend). You can explore the backend's code and documentation to learn more about its functionality.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+- **User Authentication**: Secure login and registration system.
+- **Dashboard**: The dashboard keeps track of the user's accounts and provides a user interface for connecting accounts through the Plaid API.
+- **Transaction Page**: The transaction page aggregates all linked accounts to categorize and visualize financial data.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Dashboard
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The dashboard serves as the main hub for managing financial accounts and connecting accounts through the Plaid API. Users can link their financial institution accounts to fetch transaction data and gain insights into their financial activities.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Connecting Accounts
 
-### `npm run eject`
+Users can connect their accounts using the Plaid API. The Plaid integration allows secure access to financial data and facilitates fetching transaction history for analysis.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Transaction Page
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The transaction page aggregates data from all linked accounts to provide a comprehensive view of financial transactions. This page offers tools to categorize transactions and visualize expenses through the integration of `react-google-charts` and enhances the user experience by providing visualizations of financial data. Charts and graphs help users understand their spending patterns, identify trends, and make informed financial decisions.
