@@ -22,7 +22,7 @@ The backend API that powers this frontend is available in the [Personal Finance 
 
 ## Dashboard
 
-![image](https://drive.google.com/file/d/1ZBK7lP6F5uafbnwt5trmi3DwKE3p7MdL/view?usp=sharing)
+![image](https://drive.google.com/uc?export=view&id=1ZBK7lP6F5uafbnwt5trmi3DwKE3p7MdL)
 
 The dashboard serves as the main hub for managing financial accounts and connecting accounts through the Plaid API. Users can link their financial institution accounts to fetch transaction data and gain insights into their financial activities.
 
@@ -32,6 +32,6 @@ Users can connect their accounts using the Plaid API. The Plaid integration allo
 
 ## Transaction Page
 
-![image](https://drive.google.com/file/d/1PkAhDcQ6TozKOVOiDyOJLWcEkSyljJDc/view?usp=sharing)
+![image](https://drive.google.com/uc?export=view&id=1PkAhDcQ6TozKOVOiDyOJLWcEkSyljJDc)
 
 The transaction page aggregates data from all linked accounts to provide a comprehensive view of financial transactions. This page offers tools to categorize transactions and visualize expenses through the integration of `react-google-charts` and enhances the user experience by providing visualizations of financial data. Charts and graphs help users understand their spending patterns, identify trends, and make informed financial decisions.
