@@ -5,23 +5,22 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { Provider } from "react-redux";
-import reducers from "./redux/reducers/rootReducer";
-import thunk from "redux-thunk";
-import { HashRouter as Router } from "react-router-dom";
-import { configureStore } from "@reduxjs/toolkit";
-
-const store = configureStore({
-	reducer: reducers,
-	middleware: [thunk],
-});
+import { PersistGate } from "redux-persist/integration/react";
+import {
+	HashRouter as Router,
+	BrowserRouter as DevRouter,
+} from "react-router-dom";
+import { store, persistor } from "./redux/store"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<Router>
-				<App />
-			</Router>
+			<PersistGate loading={null} persistor={persistor}>
+				<DevRouter>
+					<App />
+				</DevRouter>
+			</PersistGate>
 		</Provider>
 	</React.StrictMode>
 );
