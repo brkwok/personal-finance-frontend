@@ -2,18 +2,24 @@ import API from "./api";
 
 export const fetchPlaidInfo = async () => await API.post("/plaid/info");
 export const generateExchangeToken = async () => {
-	const accessToken = await API.post("/plaid/link_token");
+	const res = await API.post("/plaid/link_token");
+	const data = res.data
 
-	return accessToken;
+	return data;
 };
 
 export const exchangeToken = async (publicToken, institution, accounts) => {
-	const { data } = await API.post("/items", {
+	const res = await API.post("/items", {
 		publicToken,
 		institutionId: institution.institution_id,
 		institutionName: institution.name || "",
 		accounts,
 	});
+	const data = res.data;
+
+	if (res.status === 409) {
+		
+	}
 
 	return data;
 };

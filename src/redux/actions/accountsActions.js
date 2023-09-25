@@ -14,7 +14,9 @@ export const receiveAccounts = () => async (dispatch) => {
 			payload: accounts,
 		});
 	} catch (error) {
-		console.error(error);
-		dispatch({ type: RECEIVE_ACCOUNTS_ERRORS });
+		dispatch({
+			type: RECEIVE_ACCOUNTS_ERRORS,
+			payload: { message: error.message },
+		});
 	}
 };

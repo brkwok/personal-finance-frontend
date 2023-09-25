@@ -7,9 +7,7 @@ const PlaidLinkSet = () => {
 
 	const generateToken = async () => {
 		try {
-			const response = await generateExchangeToken();
-
-			const data = response.data;
+			const data = await generateExchangeToken();
 
 			setLinkToken(data.link_token);
 		} catch (error) {

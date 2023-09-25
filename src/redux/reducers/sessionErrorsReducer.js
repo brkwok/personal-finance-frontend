@@ -1,26 +1,23 @@
-import { RECEIVE_SESSION, RECEIVE_LOGOUT } from "../types/sessionTypes";
+import { CLEAR_ERRORS } from "../types";
+import { RECEIVE_SESSION, RECEIVE_SESSION_ERROR } from "../types/sessionTypes";
 
 const initialState = {
-	message: "",
+	message: null,
 };
 
-const sessionReducer = (state = initialState, action) => {
+const sessionErrorsReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case RECEIVE_SESSION_ERROR:
+			return {
+				...state,
+				message: action.payload.message,
+			};
+		case CLEAR_ERRORS:
 		case RECEIVE_SESSION:
-			return {
-				...state,
-				user: action.payload,
-				isLoggedIn: true,
-			};
-		case RECEIVE_LOGOUT:
-			return {
-				...state,
-				user: null,
-				isLoggedIn: false,
-			};
+			return initialState;
 		default:
 			return state;
 	}
 };
 
-export default sessionReducer;
+export default sessionErrorsReducer;

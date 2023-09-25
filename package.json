@@ -5,6 +5,7 @@
 	"homepage": "https://brkwok.github.io/personal-finance-frontend/",
 	"dependencies": {
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@headlessui/react": "^1.7.17",
 		"@react-oauth/google": "^0.11.0",
 		"@reduxjs/toolkit": "^1.9.5",
 		"@testing-library/jest-dom": "^5.16.5",

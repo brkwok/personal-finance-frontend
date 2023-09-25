@@ -9,12 +9,22 @@ import { getSessionInfo, logOutUser } from "../../api/session";
 
 export const loadUser = (navigate) => async (dispatch) => {
 	try {
-		const user = await getSessionInfo();
-		const data = user.data;
+		const res = await getSessionInfo();
+		const data = res.data;
+		if (res.status === 401 || res.status === 500) {
+			dispatch({
+				type: RECEIVE_SESSION_ERROR,
+				payload: { message: data.message },
+			});
+			return;
+		}
 
 		dispatch({ type: RECEIVE_SESSION, payload: data });
 	} catch (error) {
-		dispatch({ type: RECEIVE_SESSION_ERROR, payload: error });
+		dispatch({
+			type: RECEIVE_SESSION_ERROR,
+			payload: { message: error.message },
+		});
 		navigate("/");
 	}
 };

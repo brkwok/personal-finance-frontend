@@ -8,6 +8,9 @@ import Accounts from "./Accounts";
 const Dashboard = () => {
 	const dispatch = useDispatch();
 	const accounts = useSelector(state => state.accounts);
+	const errors = useSelector(state => state.errors)
+
+	console.log(errors)
 
 	useEffect(() => {
 		dispatch(setLoading());

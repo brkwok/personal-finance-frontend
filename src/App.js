@@ -12,6 +12,7 @@ import ContentWrapper from "./components/ContentWrapper";
 import Transactions from "./components/Transactions";
 // import Modal from "./components/UI/Modal";
 import Loading from "./components/UI/Loading";
+// import Alert from "./components/UI/Alert";
 
 function App() {
 	const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function App() {
 	return (
 		<div className="App">
 			<Loading />
+			{/* <Alert /> */}
 			<Routes>
 				<Route index element={<Login />} />
 				<Route

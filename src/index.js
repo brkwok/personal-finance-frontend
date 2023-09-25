@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import {
 	HashRouter as Router,
-	BrowserRouter as DevRouter,
+	// BrowserRouter as DevRouter,
 } from "react-router-dom";
 import { store, persistor } from "./redux/store"
 
@@ -17,9 +17,9 @@ root.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
-				<DevRouter>
+				<Router>
 					<App />
-				</DevRouter>
+				</Router>
 			</PersistGate>
 		</Provider>
 	</React.StrictMode>
