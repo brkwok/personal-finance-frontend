@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import {
 	HashRouter as Router,
-	// BrowserRouter as DevRouter,
+	// BrowserRouter as Router,
 } from "react-router-dom";
 import { store, persistor } from "./redux/store"
 
